@@ -2,1120 +2,290 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dinesh | AI Security Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dinesh Sangwan | AI Security Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --bg: #080c10;
-    --surface: #0d1117;
-    --border: #1c2a3a;
-    --accent: #00e5ff;
-    --accent2: #7c3aed;
-    --warn: #ff4d6d;
-    --text: #e2eaf4;
-    --muted: #5c7a94;
-    --card: #0f1923;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f9ff, #ffffff);
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 8%;
+  align-items: center;
+}
+
+nav h2 {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #2a6df4;
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 8%;
+  min-height: 85vh;
+  position: relative;
+}
+
+.hero-left {
+  max-width: 600px;
+  z-index: 2;
+}
+
+.hero-left h1 {
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.hero-left h1 span {
+  color: #2a6df4;
+}
+
+.hero-left h3 {
+  margin-top: 20px;
+  font-weight: 500;
+  color: #555;
+}
+
+.hero-left p {
+  margin-top: 20px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.btn {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 12px 25px;
+  background: #2a6df4;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #184bd6;
+}
+
+/* HERO IMAGE */
+.hero-right {
+  position: relative;
+  width: 450px;
+}
+
+.hero-right img {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Gradient glow behind image */
+.hero-right::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(42,109,244,0.25) 0%, rgba(42,109,244,0) 70%);
+  top: 20%;
+  left: 20%;
+  z-index: 1;
+}
+
+/* PROJECT SECTION */
+.section {
+  padding: 80px 8%;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.projects {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  flex: 1;
+  min-width: 280px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #2a6df4;
+}
+
+.card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.card a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2a6df4;
+}
+
+/* EXPERIENCE */
+.experience-item {
+  margin-bottom: 30px;
+}
+
+.experience-item h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.experience-item p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #f2f6ff;
+  margin-top: 50px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1000px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Mono', monospace;
-    overflow-x: hidden;
-    cursor: crosshair;
+  .hero-right {
+    margin-top: 40px;
   }
-
-  /* Animated grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Glowing orb */
-  body::after {
-    content: '';
-    position: fixed;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    animation: pulse 6s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 4rem;
-    background: rgba(8,12,16,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-
-  .nav-logo span { color: var(--warn); }
 
   nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2.5rem;
+    gap: 20px;
   }
-
-  nav ul a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  nav ul a:hover { color: var(--accent); }
-
-
-
-  /* SECTIONS */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 5rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 8rem;
-    max-width: 100%;
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-
-  .hero-tag {
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-tag::before {
-    content: '';
-    width: 30px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.2rem;
-  }
-
-  .name-dim { color: var(--muted); }
-  .name-bright { color: var(--text); }
-
-  .hero-role {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    font-weight: 600;
-    color: var(--accent);
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
-    letter-spacing: 0.01em;
-  }
-
-  .hero-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    max-width: 560px;
-    line-height: 1.9;
-    margin-bottom: 3rem;
-  }
-
-  .hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 3rem;
-  }
-
-  .badge {
-    font-size: 0.68rem;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    background: var(--card);
-  }
-
-  .badge.hot {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .badge.warn {
-    border-color: var(--warn);
-    color: var(--warn);
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    padding: 0.85rem 2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,229,255,0.3);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 0.85rem 2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* SCROLL INDICATOR */
-  .scroll-hint {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--muted);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  .scroll-hint::after {
-    content: '';
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--muted), transparent);
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
-  }
-
-  /* SECTION HEADERS */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .section-num {
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--text);
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    max-width: 200px;
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .about-text {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 2;
-  }
-
-  .about-text strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .about-text p + p { margin-top: 1.2rem; }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .stat-box {
-    background: var(--card);
-    padding: 1.8rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--accent);
-  }
-
-  .stat-label {
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  /* SKILLS */
-  .skills-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .skill-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 1.8rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .skill-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
-
-  .skill-card:hover::before { transform: scaleX(1); }
-
-  .skill-icon {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .skill-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.6rem;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .skill-tag {
-    font-size: 0.62rem;
-    padding: 0.2rem 0.5rem;
-    background: rgba(0,229,255,0.06);
-    border: 1px solid rgba(0,229,255,0.15);
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .project-card.featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  .project-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; right: 0;
-    width: 120px; height: 120px;
-    background: radial-gradient(circle at bottom right, rgba(0,229,255,0.05), transparent);
-    pointer-events: none;
-  }
-
-  .project-card:hover {
-    border-color: rgba(0,229,255,0.4);
-    transform: translateY(-3px);
-  }
-
-  .project-label {
-    font-size: 0.62rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .project-label::before {
-    content: '▸';
-  }
-
-  .project-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 1rem;
-  }
-
-  .project-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.85;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .tech-pill {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.7rem;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    background: rgba(255,255,255,0.02);
-  }
-
-  .tech-pill.highlight {
-    border-color: var(--accent2);
-    color: #a78bfa;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .proj-link {
-    font-size: 0.72rem;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: opacity 0.2s;
-  }
-
-  .proj-link:hover { opacity: 0.7; }
-
-  .proj-link.ghost {
-    color: var(--muted);
-    text-decoration: none;
-  }
-
-  /* Project visual mock */
-  .project-visual {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    aspect-ratio: 16/10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-visual .mock-bars {
-    display: flex;
-    gap: 3px;
-    align-items: flex-end;
-    height: 60px;
-  }
-
-  .mock-bar {
-    width: 8px;
-    background: var(--accent);
-    opacity: 0.6;
-    border-radius: 2px 2px 0 0;
-    animation: barAnim 1.5s ease-in-out infinite alternate;
-  }
-
-  .mock-bar:nth-child(2) { animation-delay: 0.1s; }
-  .mock-bar:nth-child(3) { animation-delay: 0.2s; }
-  .mock-bar:nth-child(4) { animation-delay: 0.3s; }
-  .mock-bar:nth-child(5) { animation-delay: 0.15s; }
-  .mock-bar:nth-child(6) { animation-delay: 0.25s; }
-  .mock-bar:nth-child(7) { animation-delay: 0.05s; }
-
-  @keyframes barAnim {
-    from { transform: scaleY(0.5); }
-    to { transform: scaleY(1); }
-  }
-
-  .project-accuracy {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    font-size: 0.65rem;
-    color: var(--accent);
-    background: rgba(0,229,255,0.08);
-    border: 1px solid rgba(0,229,255,0.2);
-    padding: 0.2rem 0.5rem;
-  }
-
-  /* TIMELINE */
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 1px;
-    background: var(--border);
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-bottom: 2.5rem;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -2.3rem;
-    top: 0.3rem;
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border: 2px solid var(--bg);
-    border-radius: 50%;
-  }
-
-  .timeline-date {
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.4rem;
-  }
-
-  .timeline-role {
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.2rem;
-  }
-
-  .timeline-org {
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-  }
-
-  .timeline-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  /* CONTACT */
-  #contact {
-    padding-bottom: 8rem;
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .contact-tagline {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-tagline span { color: var(--accent); }
-
-  .contact-sub {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.9;
-    margin-bottom: 2rem;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.82rem;
-    transition: color 0.2s;
-    padding: 0.8rem;
-    border: 1px solid transparent;
-  }
-
-  .contact-link:hover {
-    color: var(--accent);
-    border-color: var(--border);
-    background: var(--card);
-  }
-
-  .contact-link-icon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    font-size: 0.85rem;
-    flex-shrink: 0;
-  }
-
-  /* FOOTER */
-  footer {
-    position: relative;
-    z-index: 1;
-    border-top: 1px solid var(--border);
-    padding: 2rem 8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.7rem;
-    color: var(--muted);
-  }
-
-  footer a {
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  footer a:hover { color: var(--accent); }
-
-  /* CURSOR GLOW */
-  .cursor-glow {
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,229,255,0.04) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-    transition: left 0.1s ease, top 0.1s ease;
-  }
-
-  /* Animated terminal text */
-  .terminal-line {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-  }
-
-  .terminal-line .prompt { color: var(--accent); }
-  .terminal-line .cmd { color: var(--text); }
-
-  /* Typewriter effect */
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes blink {
-    from { border-color: var(--accent); }
-    to { border-color: transparent; }
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    #hero, nav, section, footer {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-    .about-grid,
-    .projects-grid,
-    .contact-grid { grid-template-columns: 1fr; }
-    .project-card.featured { grid-template-columns: 1fr; }
-    .skills-container { grid-template-columns: 1fr 1fr; }
-    nav ul { gap: 1.5rem; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-  /* Fade-in on scroll */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
 </style>
 </head>
+
 <body>
 
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">D<span>.</span>Kumar</div>
+  <h2>Dinesh Sangwan</h2>
   <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="terminal-line">
-    <span class="prompt">$</span>
-    <span class="cmd">whoami --role ai-security-engineer</span>
+<section class="hero">
+  <div class="hero-left">
+    <h1>Dinesh <span>Sangwan</span></h1>
+    <h3>AI Security Engineer | MSc Applied Cybersecurity</h3>
+    <p>
+      Building AI-powered security systems to fight deepfakes, digital fraud, 
+      and adversarial threats. Passionate about ethical AI and secure deployment.
+    </p>
+    <a href="#contact" class="btn">Get in Touch →</a>
   </div>
-  <div class="hero-tag">MS Applied Cybersecurity · AI Security Researcher</div>
-  <h1>
-    <span class="name-dim">Dinesh</span><br>
-    <span class="name-bright">Kumar</span>
-  </h1>
-  <div class="hero-role">AI Security Engineer</div>
-  <p class="hero-desc">
-    Building defenses at the intersection of artificial intelligence and cybersecurity.
-    Specialized in deepfake detection, synthetic identity fraud prevention, and adversarial ML.
-    Turning research into production-grade security systems.
-  </p>
-  <div class="hero-badges">
-    <span class="badge hot">Deepfake Detection</span>
-    <span class="badge hot">Adversarial ML</span>
-    <span class="badge">ResNet50 · PyTorch</span>
-    <span class="badge">GradCAM Visualization</span>
-    <span class="badge warn">99.99% Model Accuracy</span>
-    <span class="badge">W&B · MLOps</span>
+
+  <div class="hero-right">
+    <!-- Replace with your image -->
+    <img src="images/dinesh.png" alt="Dinesh Portrait">
   </div>
-  <div class="hero-ctas">
-    <a href="#projects" class="btn-primary">View Projects</a>
-    <a href="#contact" class="btn-secondary">Contact Me →</a>
-  </div>
-  <div class="scroll-hint">scroll</div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-header fade-in">
-    <span class="section-num">01 /</span>
-    <h2 class="section-title">About</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="about-grid">
-    <div class="about-text fade-in">
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <div class="card">
+      <h3>AI vs Real Face Detection</h3>
       <p>
-        I'm a <strong>Master's student in Applied Cybersecurity</strong> focused on the rapidly evolving threat landscape of AI-generated content and synthetic identity fraud.
+        Deep learning system distinguishing AI-generated faces from real images.
+        Next phase: Deepfake video fraud detection extension.
       </p>
-      <p>
-        My work sits at a unique intersection: I use <strong>machine learning to defend against machine learning</strong>. My capstone project developed a real-time deepfake face detector that achieves near-perfect accuracy on 140k+ image datasets.
-      </p>
-      <p>
-        I care about understanding the <strong>why behind every architectural decision</strong> — from choosing transfer learning strategies to deploying models at scale. This drives me to build systems that are not just accurate but interpretable, auditable, and production-ready.
-      </p>
-      <p>
-        Targeting roles at companies like <strong>Google, Microsoft, and leading AI security firms</strong> where I can work on large-scale adversarial threat detection.
-      </p>
-    </div>
-    <div class="stats-grid fade-in">
-      <div class="stat-box">
-        <div class="stat-num">99.99%</div>
-        <div class="stat-label">Model Accuracy</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">140k+</div>
-        <div class="stat-label">Training Images</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Deployed Projects</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">MS</div>
-        <div class="stat-label">Applied Cybersecurity</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-header fade-in">
-    <span class="section-num">02 /</span>
-    <h2 class="section-title">Skills</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="skills-container">
-    <div class="skill-card fade-in">
-      <div class="skill-icon">🛡️</div>
-      <div class="skill-name">AI Security</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Deepfake Detection</span>
-        <span class="skill-tag">Adversarial ML</span>
-        <span class="skill-tag">Synthetic ID Fraud</span>
-        <span class="skill-tag">GradCAM</span>
-      </div>
-    </div>
-    <div class="skill-card fade-in">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-name">Machine Learning</div>
-      <div class="skill-tags">
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">ResNet50</span>
-        <span class="skill-tag">Transfer Learning</span>
-        <span class="skill-tag">CNNs</span>
-      </div>
-    </div>
-    <div class="skill-card fade-in">
-      <div class="skill-icon">⚙️</div>
-      <div class="skill-name">MLOps & Deployment</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Weights & Biases</span>
-        <span class="skill-tag">Streamlit</span>
-        <span class="skill-tag">Hugging Face</span>
-        <span class="skill-tag">Google Colab</span>
-      </div>
-    </div>
-    <div class="skill-card fade-in">
-      <div class="skill-icon">🔐</div>
-      <div class="skill-name">Cybersecurity</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Network Security</span>
-        <span class="skill-tag">Threat Analysis</span>
-        <span class="skill-tag">SIEM</span>
-        <span class="skill-tag">API Security</span>
-      </div>
-    </div>
-    <div class="skill-card fade-in">
-      <div class="skill-icon">🐍</div>
-      <div class="skill-name">Languages & Tools</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Git / GitHub</span>
-        <span class="skill-tag">Linux</span>
-        <span class="skill-tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-card fade-in">
-      <div class="skill-icon">📊</div>
-      <div class="skill-name">Data & Visualization</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Pandas / NumPy</span>
-        <span class="skill-tag">Matplotlib</span>
-        <span class="skill-tag">Kaggle Datasets</span>
-        <span class="skill-tag">GIS / Mapping</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header fade-in">
-    <span class="section-num">03 /</span>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="projects-grid">
-
-    <!-- Featured Project: AI Image Detector -->
-    <div class="project-card featured fade-in">
-      <div>
-        <div class="project-label">Capstone · AI Security</div>
-        <div class="project-title">AI-Generated Face Detector</div>
-        <p class="project-desc">
-          A production-grade deepfake detection system trained on 140,000+ images. Uses ResNet50 transfer learning with fine-tuned classification heads to distinguish AI-generated faces from real photographs with near-perfect accuracy. Features real-time prediction via a Streamlit web app and GradCAM heatmaps that make model decisions interpretable and auditable — critical for security applications.
-        </p>
-        <div class="project-tech">
-          <span class="tech-pill highlight">ResNet50</span>
-          <span class="tech-pill highlight">PyTorch</span>
-          <span class="tech-pill">Transfer Learning</span>
-          <span class="tech-pill">GradCAM</span>
-          <span class="tech-pill">Streamlit</span>
-          <span class="tech-pill">Hugging Face Hub</span>
-          <span class="tech-pill">Weights & Biases</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/YOUR_USERNAME/ai-image-detector" class="proj-link" target="_blank">⬡ GitHub</a>
-          <a href="#" class="proj-link" target="_blank">↗ Live Demo</a>
-        </div>
-      </div>
-      <div class="project-visual">
-        <div class="mock-bars">
-          <div class="mock-bar" style="height:25px"></div>
-          <div class="mock-bar" style="height:50px"></div>
-          <div class="mock-bar" style="height:35px"></div>
-          <div class="mock-bar" style="height:58px"></div>
-          <div class="mock-bar" style="height:42px"></div>
-          <div class="mock-bar" style="height:60px"></div>
-          <div class="mock-bar" style="height:30px"></div>
-        </div>
-        <div class="project-accuracy">ACC 99.99%</div>
-      </div>
-    </div>
-
-    <!-- Project 2: Video Map -->
-    <div class="project-card fade-in">
-      <div class="project-label">Geospatial · Visualization</div>
-      <div class="project-title">Video Map</div>
-      <p class="project-desc">
-        An interactive geospatial visualization tool that maps video metadata and location data onto dynamic maps. Enables pattern recognition across geographic datasets — applicable in threat intelligence, surveillance analysis, and OSINT investigations relevant to security operations.
-      </p>
-      <div class="project-tech">
-        <span class="tech-pill highlight">Python</span>
-        <span class="tech-pill">Geospatial APIs</span>
-        <span class="tech-pill">Data Visualization</span>
-        <span class="tech-pill">OSINT</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/YOUR_USERNAME/video-map" class="proj-link" target="_blank">⬡ GitHub</a>
-      </div>
-    </div>
-
-    <!-- Project 3 placeholder -->
-    <div class="project-card fade-in" style="border-style: dashed; display: flex; align-items: center; justify-content: center; min-height: 200px;">
-      <div style="text-align: center; color: var(--muted);">
-        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">+</div>
-        <div style="font-size: 0.75rem; letter-spacing: 0.1em;">More projects coming soon</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header fade-in">
-    <span class="section-num">04 /</span>
-    <h2 class="section-title">Experience</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="timeline fade-in">
-    <div class="timeline-item">
-      <div class="timeline-date">2023 – PRESENT</div>
-      <div class="timeline-role">MS Applied Cybersecurity</div>
-      <div class="timeline-org">Graduate Student · Cybersecurity Program</div>
-      <div class="timeline-desc">
-        Capstone project on AI-generated face detection for synthetic identity fraud defense. Coursework spanning network security, threat intelligence, machine learning security, and applied cryptography.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2024</div>
-      <div class="timeline-role">AI Face Detection Research</div>
-      <div class="timeline-org">Independent Research Project</div>
-      <div class="timeline-desc">
-        Designed and trained a deepfake detection pipeline using ResNet50 on a 140k-image dataset. Deployed a real-time web application with explainability features (GradCAM). Achieved 99.99% classification accuracy.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">ONGOING</div>
-      <div class="timeline-role">Interview Preparation · Big Tech</div>
-      <div class="timeline-org">Target: Google, Microsoft, AI Security Firms</div>
-      <div class="timeline-desc">
-        Actively preparing for AI security engineering roles. Studying system design for ML pipelines, adversarial robustness, and large-scale threat detection systems.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header fade-in">
-    <span class="section-num">05 /</span>
-    <h2 class="section-title">Contact</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="contact-grid">
-    <div class="fade-in">
-      <div class="contact-tagline">
-        Let's talk <span>AI security</span><br>& research.
-      </div>
-      <p class="contact-sub">
-        I'm always happy to connect with fellow researchers, engineers, and anyone working on adversarial ML, deepfake defense, or AI threat detection. Feel free to reach out.
-      </p>
-      <a href="mailto:your.email@example.com" class="btn-primary">Say Hello →</a>
-    </div>
-    <div class="contact-links fade-in">
-      <a href="https://github.com/YOUR_USERNAME" target="_blank" class="contact-link">
-        <div class="contact-link-icon">GH</div>
-        <span>github.com/YOUR_USERNAME</span>
-      </a>
-      <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" class="contact-link">
-        <div class="contact-link-icon">LI</div>
-        <span>linkedin.com/in/YOUR_PROFILE</span>
-      </a>
-      <a href="mailto:your.email@example.com" class="contact-link">
-        <div class="contact-link-icon">@</div>
-        <span>your.email@example.com</span>
-      </a>
-      <a href="https://huggingface.co/YOUR_USERNAME" target="_blank" class="contact-link">
-        <div class="contact-link-icon">HF</div>
-        <span>huggingface.co/YOUR_USERNAME</span>
+      <a href="https://ai-image-detector-dineshdemo.streamlit.app/" target="_blank">
+        Live Demo →
       </a>
     </div>
+
+    <div class="card">
+      <h3>Air Pollution Awareness Platform</h3>
+      <p>
+        Geo-API powered web platform tracking awareness campaigns 
+        and generating analytical graphs to promote eco-friendly initiatives.
+      </p>
+    </div>
+
   </div>
 </section>
 
-<footer>
-  <span>© 2025 Dinesh Kumar · AI Security Engineer</span>
-  <span>Built with HTML · <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub ↗</a></span>
+<section id="experience" class="section">
+  <h2>Experience</h2>
+
+  <div class="experience-item">
+    <h4>Wipro – AI & Automotive Security Engineer</h4>
+    <p>
+      Worked with Mercedes-Benz on securing CAN communication networks 
+      and developing AI-powered security features for automotive systems.
+    </p>
+  </div>
+
+</section>
+
+<footer id="contact">
+  <p>© 2026 Dinesh Sangwan | AI Security Engineer</p>
 </footer>
 
-<script>
-  // Cursor glow
-  const glow = document.getElementById('cursorGlow');
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-
-  // Fade-in on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
