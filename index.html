@@ -87,7 +87,6 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-top: 80px;
@@ -301,7 +300,7 @@
 
   /* ── ABOUT ── */
   .about {
-    background: var(--warm);
+    background: #0e0c0a;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
@@ -309,7 +308,7 @@
   }
 
   .about-text p {
-    color: var(--ink2);
+    color: #a09688;
     line-height: 1.85;
     font-size: 0.98rem;
     margin-bottom: 1rem;
@@ -318,7 +317,7 @@
   .about-text p:last-child { margin-bottom: 0; }
 
   .about-text strong {
-    color: var(--ink);
+    color: #f0ece4;
     font-weight: 500;
   }
 
@@ -329,10 +328,10 @@
   }
 
   .about-card {
-    background: var(--cream);
+    background: #1a1510;
     border-radius: 14px;
     padding: 1.5rem;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.08);
     transition: transform 0.25s, box-shadow 0.25s;
   }
 
@@ -349,7 +348,7 @@
   .about-card h3 {
     font-size: 0.82rem;
     font-weight: 500;
-    color: var(--ink);
+    color: #f0ece4;
     margin-bottom: 0.3rem;
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.04em;
@@ -357,12 +356,12 @@
 
   .about-card p {
     font-size: 0.78rem;
-    color: var(--muted);
+    color: #7a7060;
     line-height: 1.5;
   }
 
   /* ── PROJECTS ── */
-  .projects { background: var(--cream); }
+  .projects { background: #111009; }
 
   .projects-header {
     display: flex;
@@ -378,39 +377,30 @@
   }
 
   .project-card {
-    background: var(--warm);
+    background: #1a1510;
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.07);
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
   }
 
   .project-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 60px var(--shadow);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   }
 
   .project-card.featured {
     grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    display: block;
   }
 
   .project-visual {
-    background: linear-gradient(135deg, var(--accent-light), var(--accent2-light));
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    position: relative;
-    overflow: hidden;
+    display: none;
   }
 
   .project-card.featured .project-visual {
-    height: auto;
-    min-height: 280px;
+    display: none;
   }
 
   /* Animated gradient background for project cards */
@@ -475,7 +465,7 @@
 
   .project-body p {
     font-size: 0.88rem;
-    color: var(--ink2);
+    color: #8a8070;
     line-height: 1.7;
     margin-bottom: 1.2rem;
   }
@@ -488,13 +478,13 @@
   }
 
   .tech-pill {
-    background: var(--paper);
-    color: var(--ink2);
+    background: rgba(255,255,255,0.05);
+    color: #a09688;
     font-size: 0.68rem;
     padding: 0.3rem 0.7rem;
     border-radius: 6px;
     font-family: 'DM Mono', monospace;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.08);
     letter-spacing: 0.04em;
   }
 
@@ -502,7 +492,7 @@
     display: flex;
     gap: 1.5rem;
     padding-top: 1.2rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255,255,255,0.07);
   }
 
   .project-stat .val {
@@ -593,7 +583,7 @@
   }
 
   /* ── EXPERIENCE ── */
-  .experience { background: var(--warm); }
+  .experience { background: #0e0c0a; }
 
   .timeline {
     margin-top: 3rem;
@@ -623,13 +613,13 @@
     width: 9px; height: 9px;
     border-radius: 50%;
     background: var(--accent);
-    border: 2px solid var(--warm);
+    border: 2px solid #0e0c0a;
   }
 
   .timeline-date {
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem;
-    color: var(--muted);
+    color: #6a6058;
     letter-spacing: 0.1em;
     margin-bottom: 0.4rem;
   }
@@ -650,13 +640,13 @@
 
   .timeline-item p {
     font-size: 0.88rem;
-    color: var(--ink2);
+    color: #8a8070;
     line-height: 1.7;
   }
 
   /* ── CONTACT ── */
   .contact {
-    background: var(--cream);
+    background: #111009;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 5rem;
@@ -667,7 +657,7 @@
 
   .contact-left p {
     font-size: 0.95rem;
-    color: var(--ink2);
+    color: #8a8070;
     line-height: 1.8;
     margin-bottom: 2rem;
   }
@@ -683,12 +673,12 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.2rem;
-    background: var(--warm);
+    background: #1a1510;
     border-radius: 12px;
     text-decoration: none;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.07);
     transition: border-color 0.2s, transform 0.2s;
-    color: var(--ink);
+    color: #f0ece4;
   }
 
   .contact-link:hover {
@@ -698,7 +688,7 @@
 
   .contact-link-icon {
     width: 36px; height: 36px;
-    background: var(--accent-light);
+    background: rgba(200,113,58,0.15);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -709,7 +699,7 @@
 
   .contact-link-text .label {
     font-size: 0.68rem;
-    color: var(--muted);
+    color: #6a6058;
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -718,28 +708,28 @@
   .contact-link-text .value {
     font-size: 0.88rem;
     font-weight: 500;
-    color: var(--ink);
+    color: #f0ece4;
   }
 
   .contact-right {
-    background: var(--warm);
+    background: #1a1510;
     border-radius: 20px;
     padding: 2.5rem;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.07);
   }
 
   .contact-right p {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
     font-style: italic;
-    color: var(--ink);
+    color: #f0ece4;
     line-height: 1.5;
     margin-bottom: 1.5rem;
   }
 
   .contact-right .signature {
     font-size: 0.82rem;
-    color: var(--muted);
+    color: #6a6058;
   }
 
   /* ── FOOTER ── */
@@ -811,6 +801,27 @@
     transform: translateY(-2px);
   }
 
+
+
+  /* ── GLOBAL DARK SECTION TEXT ── */
+  .projects h2, .projects .section-label,
+  .experience h2, .experience .section-label,
+  .contact h2, .contact .section-label,
+  .project-body h3, .timeline-item h3 {
+    color: #f0ece4;
+  }
+  .projects .section-label,
+  .experience .section-label,
+  .contact .section-label { color: var(--accent); }
+  .project-type { color: #6a6058 !important; }
+  .project-dot { background: rgba(255,255,255,0.12) !important; }
+  body { background: #0e0c0a; }
+
+  /* ── ABOUT DARK THEME ── */
+  .about h2 { color: #f0ece4; }
+  .about .section-label { color: var(--accent); }
+  .about-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+
   /* ── DARK HERO + NAV ── */
   nav,
   .hero,
@@ -867,25 +878,30 @@
   }
 
   .hero-photo-wrap img {
-    filter: brightness(0.95) saturate(1.0);
+    filter: brightness(0.97) saturate(1.0);
+    /* Mask fades gently on left and softly on right — image stays vivid in center */
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 18%,
-      black 78%,
+      rgba(0,0,0,0.85) 10%,
+      black 22%,
+      black 72%,
+      rgba(0,0,0,0.6) 85%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to right,
       transparent 0%,
-      black 18%,
-      black 78%,
+      rgba(0,0,0,0.85) 10%,
+      black 22%,
+      black 72%,
+      rgba(0,0,0,0.6) 85%,
       transparent 100%
     );
     transition: filter 0.4s ease;
   }
 
-  /* Use warm skin/background tones from the photo rather than pure black */
+  /* Warm colour overlay on left — picks up amber/brown from photo skin tones */
   .hero-photo-wrap::before {
     content: '';
     position: absolute;
@@ -893,18 +909,20 @@
     z-index: 1;
     background: linear-gradient(
       to right,
-      #1a110a 0%,
-      rgba(22,14,9,0.55) 12%,
-      transparent 30%
+      rgba(14,9,5,0.9) 0%,
+      rgba(30,18,10,0.5) 8%,
+      rgba(40,25,14,0.2) 18%,
+      transparent 32%
     );
   }
 
+  /* Subtle right edge fade with dark warm tone */
   .hero-photo-wrap::after {
     background: linear-gradient(
       to left,
-      rgba(28,18,12,0.6) 0%,
-      rgba(24,15,9,0.25) 18%,
-      transparent 40%
+      rgba(12,8,5,0.75) 0%,
+      rgba(20,13,8,0.3) 12%,
+      transparent 30%
     ) !important;
     z-index: 1;
   }
