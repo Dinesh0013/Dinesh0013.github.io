@@ -1,303 +1,1317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dinesh Sangwan | AI Security Engineer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dinesh — AI Security Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+  :root {
+    --cream: #faf8f4;
+    --warm: #f4efe6;
+    --paper: #ede8de;
+    --ink: #1a1714;
+    --ink2: #3d3830;
+    --muted: #8a8070;
+    --accent: #c8713a;
+    --accent2: #4a7c6b;
+    --accent-light: #f5e6d8;
+    --accent2-light: #dff0ea;
+    --border: #ddd6c8;
+    --shadow: rgba(26,23,20,0.08);
+  }
 
-body {
-  background: linear-gradient(135deg, #f5f9ff, #ffffff);
-  color: #1a1a1a;
-  overflow-x: hidden;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-/* NAVBAR */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 25px 8%;
-  align-items: center;
-}
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
 
-nav h2 {
-  font-weight: 700;
-  font-size: 22px;
-}
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 9999;
+  }
 
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-  align-items: center;
-}
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250,248,244,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
 
-nav ul li a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: 0.3s;
-}
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
 
-nav ul li a:hover {
-  color: #2a6df4;
-}
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
 
-/* HERO */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 60px 8%;
-  min-height: 85vh;
-}
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
 
-.hero-left {
-  max-width: 600px;
-}
+  .nav-links a:hover { color: var(--accent); }
 
-.hero-left h1 {
-  font-size: 70px;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.hero-left h1 span {
-  color: #2a6df4;
-}
-
-.hero-left h3 {
-  margin-top: 20px;
-  font-weight: 500;
-  color: #555;
-}
-
-.hero-left p {
-  margin-top: 20px;
-  color: #666;
-  line-height: 1.6;
-}
-
-.hero-left .highlight {
-  margin-top: 15px;
-  font-weight: 500;
-}
-
-.btn {
-  margin-top: 30px;
-  display: inline-block;
-  padding: 12px 25px;
-  background: #2a6df4;
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #184bd6;
-}
-
-/* IMAGE */
-.hero-right {
-  position: relative;
-  width: 450px;
-}
-
-.hero-right img {
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-right::before {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(42,109,244,0.25) 0%, rgba(42,109,244,0) 70%);
-  top: 20%;
-  left: 20%;
-  z-index: 1;
-}
-
-/* SECTION */
-.section {
-  padding: 80px 8%;
-}
-
-.section h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-}
-
-.projects {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  flex: 1;
-  min-width: 280px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card h3 {
-  margin-bottom: 15px;
-  color: #2a6df4;
-}
-
-.card p {
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.card a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #2a6df4;
-}
-
-/* EXPERIENCE */
-.experience-item {
-  margin-bottom: 30px;
-}
-
-.experience-item h4 {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-.experience-item p {
-  color: #555;
-  line-height: 1.6;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #f2f6ff;
-  margin-top: 50px;
-}
-
-/* RESPONSIVE */
-@media(max-width: 1000px) {
+  /* ── HERO ── */
   .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    padding: 6rem 3rem 6rem 4rem;
+    position: relative;
   }
 
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .tag.green {
+    background: var(--accent2-light);
+    color: var(--accent2);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: background 0.25s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 1.5px solid var(--border);
+    color: var(--ink2);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: border-color 0.25s, color 0.25s, transform 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO RIGHT (photo) ── */
   .hero-right {
-    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+    background: var(--warm);
   }
-}
-</style>
-</head>
 
+  .hero-photo-wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* Warm overlay for the photo */
+  .hero-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, transparent 50%, rgba(250,248,244,0.3) 100%);
+  }
+
+  /* Decorative accent block */
+  .hero-accent-block {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    background: var(--cream);
+    padding: 1.2rem 1.6rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow);
+    z-index: 2;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 4rem 4rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 3rem;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: #0e0c0a;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: #a09688;
+    line-height: 1.85;
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-text strong {
+    color: #f0ece4;
+    font-weight: 500;
+  }
+
+  .about-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .about-card {
+    background: #1a1510;
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+
+  .about-card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .about-card h3 {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #f0ece4;
+    margin-bottom: 0.3rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  .about-card p {
+    font-size: 0.78rem;
+    color: #7a7060;
+    line-height: 1.5;
+  }
+
+  /* ── PROJECTS ── */
+  .projects { background: #111009; }
+
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: #1a1510;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: block;
+  }
+
+  .project-visual {
+    display: none;
+  }
+
+  .project-card.featured .project-visual {
+    display: none;
+  }
+
+  /* Animated gradient background for project cards */
+  .project-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 0deg at 50% 50%, var(--accent-light), var(--accent2-light), var(--paper), var(--accent-light));
+    animation: spin 12s linear infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .project-visual-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 3.5rem;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+  }
+
+  .project-body {
+    padding: 2rem;
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .project-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+  .project-status {
+    font-size: 0.65rem;
+    background: var(--accent2-light);
+    color: var(--accent2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+  }
+
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .project-body p {
+    font-size: 0.88rem;
+    color: #8a8070;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-pill {
+    background: rgba(255,255,255,0.05);
+    color: #a09688;
+    font-size: 0.68rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    border: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: 0.04em;
+  }
+
+  .project-stat-row {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .project-stat .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .project-stat .lbl {
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── SKILLS ── */
+  .skills {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skills::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,113,58,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .skills .section-label { color: var(--accent); }
+  .skills h2 { color: var(--cream); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .skill-group {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: background 0.25s;
+  }
+
+  .skill-group:hover {
+    background: rgba(255,255,255,0.07);
+  }
+
+  .skill-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-list li {
+    font-size: 0.88rem;
+    color: rgba(250,248,244,0.75);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .skill-list li:last-child { border-bottom: none; }
+
+  .skill-list li::before {
+    content: '▸';
+    color: var(--accent);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: #0e0c0a; }
+
+  .timeline {
+    margin-top: 1.5rem;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+
+  .timeline-item {
+    padding-left: 2.5rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 5px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #0e0c0a;
+  }
+
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: #6a6058;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-item .org {
+    font-size: 0.82rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .timeline-item p {
+    font-size: 0.88rem;
+    color: #8a8070;
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: #111009;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .contact-left h2 { margin-bottom: 1rem; }
+
+  .contact-left p {
+    font-size: 0.95rem;
+    color: #8a8070;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: #1a1510;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: border-color 0.2s, transform 0.2s;
+    color: #f0ece4;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: rgba(200,113,58,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-text .label {
+    font-size: 0.68rem;
+    color: #6a6058;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-link-text .value {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #f0ece4;
+  }
+
+  .contact-right {
+    background: #1a1510;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .contact-right p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #f0ece4;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-right .signature {
+    font-size: 0.82rem;
+    color: #6a6058;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(250,248,244,0.4);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-eyebrow  { animation-delay: 0.1s; }
+  .hero-left h1  { animation-delay: 0.25s; }
+  .hero-desc     { animation-delay: 0.4s; }
+  .hero-tags     { animation-delay: 0.55s; }
+  .hero-ctas     { animation-delay: 0.7s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 400px; }
+    .hero-left { padding: 5rem 2rem 3rem; }
+    section { padding: 4rem 2rem; }
+    .about, .contact { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  .nav-social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--warm);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.2s;
+    color: var(--ink2);
+    text-decoration: none;
+  }
+  .nav-social a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+
+
+  /* ── GLOBAL DARK SECTION TEXT ── */
+  .projects h2, .projects .section-label,
+  .experience h2, .experience .section-label,
+  .contact h2, .contact .section-label,
+  .project-body h3, .timeline-item h3 {
+    color: #f0ece4;
+  }
+  .projects .section-label,
+  .experience .section-label,
+  .contact .section-label { color: var(--accent); }
+  .project-type { color: #6a6058 !important; }
+  .project-dot { background: rgba(255,255,255,0.12) !important; }
+  body { background: #0e0c0a; }
+
+  /* ── ABOUT DARK THEME ── */
+  .about h2 { color: #f0ece4; }
+  .about .section-label { color: var(--accent); }
+  .about-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+
+  /* ── DARK HERO + NAV ── */
+  nav,
+  .hero,
+  .hero-left {
+    --ink: #f0ece4;
+    --ink2: #c9c2b4;
+    --muted: #8a8a8a;
+    --border: rgba(255,255,255,0.12);
+    --accent-light: rgba(200,113,58,0.18);
+    --accent2-light: rgba(74,124,107,0.18);
+    --shadow: rgba(0,0,0,0.4);
+  }
+
+  nav {
+    background: rgba(14,12,10,0.88) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  }
+
+  .nav-logo { color: var(--ink) !important; }
+  .nav-links a { color: var(--muted) !important; }
+  .nav-links a:hover { color: var(--accent) !important; }
+
+  .hero {
+    background: #0e0c0a;
+  }
+
+  .hero-left {
+    background: #0e0c0a;
+  }
+
+  .hero-left h1 { color: #f0ece4 !important; }
+  .hero-left .hero-desc { color: #a09688 !important; }
+
+  .hero-left .btn-primary {
+    background: #f0ece4 !important;
+    color: #0e0c0a !important;
+  }
+  .hero-left .btn-primary:hover {
+    background: var(--accent) !important;
+    color: #f0ece4 !important;
+  }
+  .hero-left .btn-outline {
+    border-color: rgba(255,255,255,0.18) !important;
+    color: #c9c2b4 !important;
+  }
+  .hero-left .btn-outline:hover {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+
+  /* Fade edges of photo into the dark background */
+  .hero-right {
+    background: #0e0c0a;
+  }
+
+  .hero-photo-wrap img {
+    filter: brightness(0.97) saturate(1.0);
+    /* Mask: left/right fade AND bottom fade starting from ~60% (jacket end) */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0,0,0,0.85) 10%,
+      black 22%,
+      black 72%,
+      rgba(0,0,0,0.6) 85%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 58%,
+      rgba(0,0,0,0.7) 70%,
+      rgba(0,0,0,0.3) 82%,
+      transparent 100%
+    );
+    -webkit-mask-composite: intersect;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0,0,0,0.85) 10%,
+      black 22%,
+      black 72%,
+      rgba(0,0,0,0.6) 85%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      black 0%,
+      black 58%,
+      rgba(0,0,0,0.7) 70%,
+      rgba(0,0,0,0.3) 82%,
+      transparent 100%
+    );
+    mask-composite: intersect;
+    transition: filter 0.4s ease;
+  }
+
+  /* Warm colour overlay on left — picks up amber/brown from photo skin tones */
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(14,9,5,0.9) 0%,
+      rgba(30,18,10,0.5) 8%,
+      rgba(40,25,14,0.2) 18%,
+      transparent 32%
+    );
+  }
+
+  /* Subtle right edge fade with dark warm tone */
+  .hero-photo-wrap::after {
+    background: linear-gradient(
+      to left,
+      rgba(12,8,5,0.75) 0%,
+      rgba(20,13,8,0.3) 12%,
+      transparent 30%
+    ) !important;
+    z-index: 1;
+  }
+
+  /* Accent stat block dark style */
+  .hero-accent-block {
+    background: rgba(25,22,18,0.92) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+  }
+
+  .hero-stat-label { color: #8a8a8a !important; }
+
+
+  </style>
+</head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <h2>Dinesh Sangwan</h2>
-  <ul>
+  <a href="#" class="nav-logo">Dinesh</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Connect With Me</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-social">
+    <a href="https://github.com/Dinesh0013" target="_blank" title="GitHub">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/dineshsangwan13/" target="_blank" title="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://huggingface.co/dinesh130813" target="_blank" title="Hugging Face" style="font-size:1rem;">🤗</a>
+  </div>
 </nav>
 
-<section class="hero">
+<!-- HERO -->
+<section class="hero" id="hero">
   <div class="hero-left">
-    <h1>Dinesh <span>Sangwan</span></h1>
-    <h3>AI Security Engineer | MSc Applied Cybersecurity</h3>
-
-    <p>
-      Building AI-powered security systems to fight deepfakes, digital fraud, 
-      and adversarial threats.
+    <div class="hero-eyebrow">Security Engineer · AI Researcher</div>
+    <h1>Dinesh<br><em>Merges</em><br>Security &amp; AI.</h1>
+    <p class="hero-desc">
+      Cybersecurity engineer and AI researcher focused on <strong>machine learning</strong>, <strong>deep learning</strong>, and securing the internet space for the people — building systems that are both intelligent and trustworthy.
     </p>
-
-    <p class="highlight">
-      If you have any <strong>cool</strong> and <strong>crazy</strong> ideas to work on, 
-      just ping and let's get started.
-    </p>
-
-    <a href="#contact" class="btn">Get in Touch →</a>
+    <div class="hero-tags">
+      <span class="tag">AI Security</span>
+      <span class="tag green">Deepfake Detection</span>
+      <span class="tag">Digital Forensics</span>
+      <span class="tag green">Automotive CyberSec</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
   </div>
 
   <div class="hero-right">
-    <img src="dinesh.png" alt="Dinesh Portrait">
+    <div class="hero-photo-wrap">
+      <img src="assests/dineshdp.jpg" alt="Dinesh"/>
+    </div>
+  </div>
   </div>
 </section>
 
-<section id="projects" class="section">
-  <h2>Projects</h2>
-  <div class="projects">
-
-    <div class="card">
-      <h3>AI vs Real Face Detection</h3>
-      <p>
-        Deep learning system distinguishing AI-generated faces from real images.
-        Future extension: Deepfake fraud detection.
-      </p>
-      <a href="https://ai-image-detector-dineshdemo.streamlit.app/" target="_blank">
-        Live Demo →
-      </a>
-    </div>
-
-    <div class="card">
-      <h3>Air Pollution Awareness Platform</h3>
-      <p>
-        Geo-API powered platform tracking awareness video campaigns 
-        and generating analytical visualizations.
-      </p>
-      <a href="https://dinesh0013.github.io/Video_map/" target="_blank">
-        View Project →
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<section id="experience" class="section">
-  <h2>Experience</h2>
-
-  <div class="experience-item">
-    <h4>Wipro – AI & Automotive Security Engineer</h4>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <div class="section-label">About Me</div>
+    <h2>Security meets<br>machine learning.</h2>
     <p>
-      Collaborated with Mercedes-Benz on securing CAN communication networks 
-      and developing AI-driven automotive security features.
+      I'm a cybersecurity researcher with a deep interest in how AI systems can both create and defend against new threat vectors. My work sits at the intersection of <strong>computer vision, adversarial ML, and real-world security challenges</strong>.
+    </p>
+    <p>
+      I'm drawn to problems where the stakes are high: synthetic identity fraud, deepfake-enabled disinformation, and the arms race between generative models and detection systems.
     </p>
   </div>
-
+  <div class="about-cards">
+    <div class="about-card">
+      <div class="about-card-icon">🔬</div>
+      <h3>Research</h3>
+      <p>Adversarial ML, deepfake detection & synthetic media forensics</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🧠</div>
+      <h3>ML Engineering</h3>
+      <p>PyTorch, transfer learning, GradCAM interpretability, W&B</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🛡️</div>
+      <h3>Security</h3>
+      <p>Identity fraud defense, threat modeling, AI robustness</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🚀</div>
+      <h3>Deployment</h3>
+      <p>Streamlit, Hugging Face Hub, cloud-native ML pipelines</p>
+    </div>
+  </div>
 </section>
 
-<footer id="contact">
-  <h3>Connect With Me</h3>
-  <p>
-    <a href="https://www.linkedin.com/in/dineshsangwan13/" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/Dinesh0013" target="_blank">GitHub</a> |
-    <a href="https://huggingface.co/dinesh130813" target="_blank">HuggingFace</a>
-  </p>
-  <p style="margin-top:15px;">© 2026 Dinesh Sangwan</p>
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-label">Selected Work</div>
+      <h2>Projects</h2>
+    </div>
+    <a href="https://github.com/Dinesh0013" class="btn-outline" target="_blank">GitHub →</a>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- FEATURED PROJECT -->
+    <div class="project-card featured">
+      <div class="project-visual">
+        <span class="project-visual-icon">🤖</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-type">Capstone · Computer Vision</span>
+          <span class="project-dot"></span>
+          <span class="project-status">Live Demo</span>
+        </div>
+        <h3>SyntheticShield — AI Face Authenticity Detection System <span style="font-size:0.75rem;font-family:'DM Mono',monospace;color:var(--accent);font-weight:400;font-style:normal;">Ongoing</span></h3>
+        <p>
+          Building an advanced deepfake and AI-generated face detection system using ResNet50 transfer learning.
+        </p>
+        <ul style="list-style:none;margin:0 0 1rem 0;padding:0;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Trained on 140,000+ images (GAN-generated + real faces)</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Achieved near-perfect validation accuracy in initial experiments</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Currently expanding training to Stable Diffusion and Midjourney datasets</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Integrated Grad-CAM visualizations for transparent, explainable AI</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Designed for security, digital forensics, and high-trust verification systems</li>
+        </ul>
+        <p style="font-style:italic;color:var(--muted);font-size:0.85rem;border-left:2px solid var(--accent);padding-left:0.8rem;">
+          SyntheticShield focuses on robust detection of modern generative models while ensuring model interpretability — a critical requirement for real-world cybersecurity applications.
+        </p>
+        <div class="project-tech">
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">ResNet50</span>
+          <span class="tech-pill">GradCAM</span>
+          <span class="tech-pill">Streamlit</span>
+          <span class="tech-pill">Hugging Face</span>
+          <span class="tech-pill">Weights & Biases</span>
+        </div>
+        <div class="project-stat-row">
+          <div class="project-stat">
+            <div class="val">140k+</div>
+            <div class="lbl">Training Images</div>
+          </div>
+          <div class="project-stat">
+            <div class="val">Live</div>
+            <div class="lbl">Deployment</div>
+          </div>
+        </div>
+        <a href="https://ai-image-detector-dineshdemo.streamlit.app/" target="_blank" class="btn-primary" style="display:inline-flex;margin-top:1rem;font-size:0.8rem;padding:0.6rem 1.4rem;background:var(--accent);color:#fff;">View Live →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-visual">
+        <span class="project-visual-icon">🗺️</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-type">Geospatial · Research</span>
+          <span class="project-dot"></span>
+          <span class="project-status">Live Demo</span>
+        </div>
+        <h3>GeoInsight — Research Visualization Platform</h3>
+        <p>
+          Developed in collaboration with Queen's University Belfast, this platform analyzed the impact of pollution-awareness videos shown to children by combining geospatial mapping with data visualization.
+        </p>
+        <ul style="list-style:none;margin:0 0 1rem 0;padding:0;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Built the full web interface using HTML, CSS, and Google Maps API</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Automated conversion of location data into latitude/longitude coordinates</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Implemented real-time map updates using a secured Google API key</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Generated analytical graphs to visualize behavioral impact metrics</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Integrated data workflows using Google Colab for processing and analysis</li>
+        </ul>
+        <p style="font-style:italic;color:var(--muted);font-size:0.85rem;border-left:2px solid var(--accent);padding-left:0.8rem;">
+          Led all technical development, delivering a live, interactive system that mapped video deployment locations and visually represented research findings through dynamic charts and geospatial overlays.
+        </p>
+        <div class="project-tech">
+          <span class="tech-pill">HTML/CSS</span>
+          <span class="tech-pill">Google Maps API</span>
+          <span class="tech-pill">Google Colab</span>
+          <span class="tech-pill">Data Visualization</span>
+          <span class="tech-pill">Geospatial</span>
+        </div>
+        <a href="https://dinesh0013.github.io/Video_map/" target="_blank" class="btn-primary" style="display:inline-flex;margin-top:1rem;font-size:0.8rem;padding:0.6rem 1.4rem;background:var(--accent);color:#fff;">View Live →</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 placeholder -->
+    <div class="project-card">
+      <div class="project-visual">
+        <span class="project-visual-icon">⚙️</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-type">Security Research</span>
+        </div>
+        <h3>More Coming Soon</h3>
+        <p>
+          Additional projects in adversarial ML and AI security tooling currently in progress. Check back or follow on GitHub.
+        </p>
+        <div class="project-tech">
+          <span class="tech-pill">In Progress</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">Technical Stack</div>
+  <h2>Skills & Tools</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-label">Tech Stack</div>
+      <ul class="skill-list">
+        <li>Go</li>
+        <li>Python</li>
+        <li>C / C++</li>
+        <li>HTML / CSS / JavaScript</li>
+        <li>Bash / Shell Scripting</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Cybersecurity</div>
+      <ul class="skill-list">
+        <li>Penetration Testing</li>
+        <li>CAN Bus &amp; ECU Security</li>
+        <li>Threat Modelling</li>
+        <li>Cryptography</li>
+        <li>Network Security</li>
+        <li>Deepfake Detection</li>
+        <li>Digital Forensics</li>
+        <li>Fault Injection Testing</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Dev &amp; Research Tools</div>
+      <ul class="skill-list">
+        <li>GitHub</li>
+        <li>Google Colab</li>
+        <li>Jira</li>
+        <li>Linux</li>
+        <li>Wireshark</li>
+        <li>VS Code</li>
+        <li>Google Maps API</li>
+        <li>Streamlit</li>
+      </ul>
+    </div>
+
+    <div class="skill-group" style="grid-column: 1 / -1; background: rgba(200,113,58,0.08); border-color: rgba(200,113,58,0.2);">
+      <div class="skill-group-label" style="color:#e8a87c;">AI Tools &amp; Platforms</div>
+      <ul class="skill-list" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;">
+        <li>Claude (Anthropic)</li>
+        <li>ChatGPT (OpenAI)</li>
+        <li>GitHub Copilot</li>
+        <li>Gemini (Google)</li>
+        <li>Hugging Face</li>
+        <li>Weights &amp; Biases</li>
+        <li>Midjourney</li>
+        <li>Stable Diffusion</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">Background</div>
+  <h2>Experience &<br>Education</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">2025 – Present</div>
+      <h3>MSc Applied Cybersecurity</h3>
+      <div class="org">Queen's University Belfast · Belfast, UK</div>
+      <p>Modules: <em>Network Security &nbsp;·&nbsp; Pentesting &amp; Ethical Hacking &nbsp;·&nbsp; Cryptography &nbsp;·&nbsp; Cyber in AI &nbsp;·&nbsp; Software Assurance</em></p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">May 2022 – Sept 2025</div>
+      <h3>Project Engineer</h3>
+      <div class="org">Wipro · Bengaluru, India</div>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;">
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Performed integration and CAN network security testing for Mercedes‑Benz Truck Instrument Clusters, ensuring secure ECU communication and compliance with automotive cybersecurity standards.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Analyzed CAN bus traffic, detected anomalies, and validated message integrity and ECU authentication mechanisms.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Conducted stress, high-load, and fault-injection tests to assess system resilience against abnormal or malicious inputs.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Collaborated with global suppliers to review security requirements and strengthen cross-module communication safeguards.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Automated secure ECU flashing workflows, improving efficiency and reducing human error in software updates.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-label">Contact</div>
+    <h2>Let's connect.</h2>
+    <p>
+      Always happy to talk AI security, research, or anything at the intersection of machine learning and adversarial systems. Reach out through any of the links below.
+    </p>
+    <p style="margin-bottom:1.5rem;">
+      If you have any <strong style="color:var(--ink)">cool</strong> and <strong style="color:var(--ink)">crazy</strong> ideas to work on, just ping and let's get started.
+    </p>
+    <div class="contact-links">
+      <a href="/cdn-cgi/l/email-protection#4125282f24322970727179707201262c20282d6f222e2c" class="contact-link">
+        <div class="contact-link-icon" style="background:#fce8e6;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="20" height="14" x="2" y="5" rx="2" stroke="#EA4335" stroke-width="1.8"/><path d="M2 7l10 7 10-7" stroke="#EA4335" stroke-width="1.8"/></svg>
+        </div>
+        <div class="contact-link-text">
+          <div class="label">Gmail</div>
+          <div class="value"><span class="__cf_email__" data-cfemail="24404d4a41574c1517141c1517644349454d480a474b49">[email&#160;protected]</span></div>
+        </div>
+      </a>
+      <a href="https://github.com/Dinesh0013" class="contact-link" target="_blank">
+        <div class="contact-link-icon" style="background:#f0f0f0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1714"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </div>
+        <div class="contact-link-text">
+          <div class="label">GitHub</div>
+          <div class="value">github.com/Dinesh0013</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/dineshsangwan13/" class="contact-link" target="_blank">
+        <div class="contact-link-icon" style="background:#e8f0fe;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <div class="contact-link-text">
+          <div class="label">LinkedIn</div>
+          <div class="value">linkedin.com/in/dineshsangwan13</div>
+        </div>
+      </a>
+      <a href="https://huggingface.co/dinesh130813" class="contact-link" target="_blank">
+        <div class="contact-link-icon" style="background:#fff8e1;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><text y="16" font-size="16">🤗</text></svg>
+        </div>
+        <div class="contact-link-text">
+          <div class="label">Hugging Face</div>
+          <div class="value">huggingface.co/dinesh130813</div>
+        </div>
+      </a>
+    </div>
+    </div>
+    <div class="contact-right">
+    <p>"Sounding the alarm before the breach — that's the only defense that matters."</p>
+    <div class="signature">— Dinesh Sangwan · Applied Cybersecurity Researcher</div>
+  </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 <span>Dinesh Sangwan</span></div>
+  <div>Built with precision · Secured by design</div>
 </footer>
 
 </body>
