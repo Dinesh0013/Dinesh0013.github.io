@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog — Dinesh Sangwan</title>
+<meta name="description" content="Notes on automotive cybersecurity, cryptanalysis and embedded security by Dinesh Sangwan."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #f0ece4;
+    --ink2: #c9c2b4;
+    --muted: #8a8a8a;
+    --accent: #c8713a;
+    --accent2: #4a7c6b;
+    --accent-light: rgba(200,113,58,0.18);
+    --accent2-light: rgba(74,124,107,0.18);
+    --border: rgba(255,255,255,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #0e0c0a;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── NAV (matches index.html) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(14,12,10,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--accent); }
+
+  .nav-social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: #f4efe6;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.2s;
+    color: #3d3830;
+    text-decoration: none;
+  }
+  .nav-social a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── PAGE LAYOUT ── */
+  main {
+    padding: 8rem 4rem 5rem;
+    min-height: 80vh;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; }
+  .container.narrow { max-width: 720px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 3rem;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.12;
+    color: #f0ece4;
+    margin-bottom: 1rem;
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .blog-intro {
+    font-size: 1rem;
+    color: #a09688;
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── TAGS ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .tag.green {
+    background: var(--accent2-light);
+    color: var(--accent2);
+  }
+
+  .post-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: #6a6058;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ── POST LIST ── */
+  .post-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .post-card {
+    display: block;
+    background: #1a1510;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border-color: rgba(200,113,58,0.45);
+  }
+
+  .post-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #f0ece4;
+    margin-bottom: 0.7rem;
+  }
+
+  .post-card p {
+    font-size: 0.9rem;
+    color: #8a8070;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .read-more {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  .empty-state { color: #8a8070; font-size: 0.95rem; }
+
+  /* ── SINGLE POST ── */
+  .back-link {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .post-header { margin-bottom: 2rem; }
+  .post-header .tags { margin-top: 1rem; }
+
+  .post-body { color: #a09688; font-size: 1rem; line-height: 1.85; }
+
+  .post-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #f0ece4;
+    margin: 2.2rem 0 0.8rem;
+  }
+
+  .post-body p { margin-bottom: 1rem; }
+  .post-body strong { color: #f0ece4; font-weight: 500; }
+  .post-body a { color: var(--accent); }
+
+  .post-body ul, .post-body ol { margin: 0 0 1rem 1.3rem; }
+  .post-body li { margin-bottom: 0.4rem; }
+  .post-body li::marker { color: var(--accent); }
+
+  .post-body code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.88em;
+    background: rgba(255,255,255,0.06);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: #f0ece4;
+  }
+
+  .post-body pre {
+    background: #1a1510;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .post-body pre code { background: none; padding: 0; }
+
+  .post-body blockquote {
+    margin: 2rem 0 0;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--accent);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .post-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 2.5rem;
+    margin: 1.8rem 0 0.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .post-stat .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+
+  .post-stat .lbl {
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 0.2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a1714;
+    color: rgba(250,248,244,0.4);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    main { padding: 7rem 2rem 4rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem; }
+  }
+
+  /* Seven links need tighter spacing below 1180px */
+  @media (max-width: 1180px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+  }
+
+  /* Narrow nav: links on their own scrollable row so every item stays reachable */
+  @media (max-width: 960px) {
+    nav { flex-wrap: wrap; row-gap: 0.5rem; padding: 0.7rem 1.2rem; }
+    .nav-links {
+      order: 3;
+      width: 100%;
+      gap: 1.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { white-space: nowrap; }
+    main { padding-top: 8rem; }
+    .post-card { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Dinesh</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#results">Results</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://github.com/Dinesh0013" target="_blank" rel="noopener" title="GitHub">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/dineshsangwan13/" target="_blank" rel="noopener" title="LinkedIn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://huggingface.co/dinesh130813" target="_blank" rel="noopener" title="Hugging Face" style="font-size:1rem;">🤗</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container" id="blog-root">
+    <noscript><p class="empty-state">The blog needs JavaScript enabled to display posts.</p></noscript>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 <span>Dinesh Sangwan</span></div>
+  <div>Built with precision · Secured by design</div>
+</footer>
+
+<script src="blog/posts.js"></script>
+<script>
+(function () {
+  var root = document.getElementById('blog-root');
+  var posts = (window.BLOG_POSTS || []).slice().sort(function (a, b) {
+    return b.date.localeCompare(a.date);
+  });
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function formatDate(iso) {
+    return new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+  }
+
+  function readingTime(html) {
+    var words = html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200)) + ' min read';
+  }
+
+  function metaLine(post) {
+    return el('div', 'post-meta', formatDate(post.date) + ' · ' + readingTime(post.content));
+  }
+
+  function tagList(post) {
+    var list = el('div', 'tags');
+    (post.tags || []).forEach(function (t, i) {
+      list.appendChild(el('span', i % 2 ? 'tag green' : 'tag', t));
+    });
+    return list;
+  }
+
+  function setTitle(title, description) {
+    document.title = title + ' — Dinesh Sangwan';
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta && description) meta.setAttribute('content', description);
+  }
+
+  function renderList() {
+    root.textContent = '';
+    root.appendChild(el('div', 'section-label', 'Blog'));
+    var heading = el('h1');
+    heading.appendChild(document.createTextNode('Notes on '));
+    heading.appendChild(el('em', '', 'security'));
+    heading.appendChild(document.createTextNode(' & engineering.'));
+    root.appendChild(heading);
+    root.appendChild(el('p', 'blog-intro',
+      'Write-ups on automotive cybersecurity, cryptanalysis and embedded security, from my projects and research.'));
+
+    if (!posts.length) {
+      root.appendChild(el('p', 'empty-state', 'No posts yet.'));
+      return;
+    }
+
+    var list = el('div', 'post-list');
+    posts.forEach(function (post) {
+      var card = el('a', 'post-card');
+      card.href = 'blog.html?post=' + encodeURIComponent(post.slug);
+      card.appendChild(metaLine(post));
+      card.appendChild(el('h2', '', post.title));
+      card.appendChild(el('p', '', post.summary));
+      card.appendChild(tagList(post));
+      var more = el('div', 'read-more', 'Read post →');
+      more.style.marginTop = '1.2rem';
+      card.appendChild(more);
+      list.appendChild(card);
+    });
+    root.appendChild(list);
+    setTitle('Blog');
+  }
+
+  function renderPost(post) {
+    root.textContent = '';
+    root.classList.add('narrow');
+
+    var back = el('a', 'back-link', '← All posts');
+    back.href = 'blog.html';
+    root.appendChild(back);
+
+    var header = el('header', 'post-header');
+    header.appendChild(metaLine(post));
+    header.appendChild(el('h1', '', post.title));
+    header.appendChild(tagList(post));
+    root.appendChild(header);
+
+    var body = el('article', 'post-body');
+    body.innerHTML = post.content; // trusted: authored in blog/posts.js, never taken from the URL
+    root.appendChild(body);
+
+    setTitle(post.title, post.summary);
+  }
+
+  function renderNotFound() {
+    root.textContent = '';
+    var back = el('a', 'back-link', '← All posts');
+    back.href = 'blog.html';
+    root.appendChild(back);
+    root.appendChild(el('h1', '', 'Post not found'));
+    root.appendChild(el('p', 'blog-intro', 'That post does not exist or may have moved.'));
+    setTitle('Post not found');
+  }
+
+  var slug = new URLSearchParams(window.location.search).get('post');
+  if (!slug) {
+    root.classList.remove('narrow');
+    renderList();
+    return;
+  }
+
+  var match = posts.filter(function (p) { return p.slug === slug; })[0];
+  if (match) renderPost(match); else renderNotFound();
+})();
+</script>
+
+</body>
+</html>

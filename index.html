@@ -644,6 +644,99 @@
     line-height: 1.7;
   }
 
+  /* ── ACADEMIC RESULTS ── */
+  .results { background: #111009; }
+
+  .results .section-label { color: var(--accent); }
+  .results h2 { color: #f0ece4; }
+  .results h2 em { font-style: italic; color: var(--accent); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .result-card {
+    background: #1a1510;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .result-card.highlight { border-color: rgba(200,113,58,0.45); }
+
+  .result-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,113,58,0.18);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .result-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #f0ece4;
+    margin-bottom: 0.3rem;
+  }
+
+  .result-card .org {
+    font-size: 0.82rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .result-card p {
+    font-size: 0.88rem;
+    color: #8a8070;
+    line-height: 1.7;
+  }
+
+  .result-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem 1.5rem;
+    margin: 1.5rem 0;
+    padding: 1.2rem 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .result-stat .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+
+  .result-stat .lbl {
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 0.2rem;
+  }
+
+  .result-modules-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6a6058;
+    margin-bottom: 0.7rem;
+  }
+
   /* ── CONTACT ── */
   .contact {
     background: #111009;
@@ -775,6 +868,7 @@
     .about, .contact { grid-template-columns: 1fr; gap: 2.5rem; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
@@ -954,6 +1048,31 @@
   .hero-stat-label { color: #8a8a8a !important; }
 
 
+  /* ── NAV FIT: seven links need tighter spacing below 1180px ── */
+  @media (max-width: 1180px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+  }
+
+  /* ── NARROW NAV: links on their own scrollable row so every item stays reachable ── */
+  @media (max-width: 960px) {
+    nav { flex-wrap: wrap; row-gap: 0.5rem; padding: 0.7rem 1.2rem; }
+    .nav-links {
+      order: 3;
+      width: 100%;
+      gap: 1.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { white-space: nowrap; }
+    .hero { padding-top: 104px; }
+  }
+
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
   </style>
 </head>
 <body>
@@ -965,7 +1084,9 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#results">Results</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-social">
@@ -982,16 +1103,17 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Automotive Security Engineer · MSc Cybersecurity</div>
+    <div class="hero-eyebrow">Automotive Security Engineer · MSc Cybersecurity (Distinction)</div>
     <h1>Dinesh<br>Secures<br><em>Vehicle</em> Networks.</h1>
     <p class="hero-desc">
-      Electronics engineer with <strong>3+ years validating CAN bus, LIN, and UDS systems</strong> at Daimler Trucks, now applying that hands-on ECU experience to automotive cybersecurity — threat modelling, intrusion detection, and secure diagnostics under <strong>ISO/SAE 21434</strong>.
+      Electronics engineer with <strong>3+ years validating ECUs and CAN, LIN and UDS networks</strong> at Daimler Trucks, now an <strong>MSc Applied Cybersecurity graduate (Distinction)</strong> focused on automotive and embedded product security — threat modelling under <strong>ISO/SAE 21434</strong>, intrusion detection, and penetration testing.
     </p>
     <div class="hero-tags">
       <span class="tag">CAN Bus Security</span>
       <span class="tag green">ISO/SAE 21434</span>
       <span class="tag">UDS &amp; Diagnostics</span>
       <span class="tag green">AUTOSAR SecOC</span>
+      <span class="tag">Penetration Testing</span>
     </div>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects →</a>
@@ -1013,32 +1135,32 @@
     <div class="section-label">About Me</div>
     <h2>From ECU validation<br>to threat modelling.</h2>
     <p>
-      I'm an automotive cybersecurity engineer with <strong>3+ years validating ECU hardware and in-vehicle networks</strong> at DTICI (Daimler Trucks Innovation Centre India), where I worked hands-on with CAN bus, UDS diagnostics, and CAPL scripting — including malformed frame injection and structured root-cause analysis on production ECUs.
+      I'm an automotive cybersecurity engineer with <strong>3+ years validating ECUs and in-vehicle networks</strong> at DTICI (Daimler Trucks Innovation Centre India), where I root-caused <strong>500+ vehicle-level defects</strong> across CAN, CAN FD, LIN and UDS, built a Python and CAPL test automation framework that cut pre-release validation effort by 90%, and owned requirement-based testing for ADAS and Rear View Camera features.
     </p>
     <p>
-      I'm now completing an <strong>MSc in Applied Cybersecurity at Queen's University Belfast</strong>, applying that real-world validation experience to threat analysis and risk assessment under ISO/SAE 21434 — bridging the gap between how vehicle networks actually behave and how they should be defended.
+      I've now completed an <strong>MSc in Applied Cybersecurity at Queen's University Belfast with Distinction</strong>, applying that real-world validation experience to threat analysis and risk assessment under ISO/SAE 21434, penetration testing and cryptography — bridging the gap between how vehicle networks actually behave and how they should be defended.
     </p>
   </div>
   <div class="about-cards">
     <div class="about-card">
       <div class="about-card-icon">🚗</div>
       <h3>In-Vehicle Networks</h3>
-      <p>CAN bus, LIN, UDS, OBD-II, CANoe/CAPL, hardware-in-the-loop testing</p>
+      <p>CAN, CAN FD, LIN, UDS (ISO 14229), ISO-TP, OBD-II, CANoe/CAPL, HIL testing</p>
     </div>
     <div class="about-card">
       <div class="about-card-icon">🛡️</div>
       <h3>Security Standards</h3>
-      <p>ISO/SAE 21434, UNECE WP.29 R155/R156, TARA, STRIDE threat modelling</p>
+      <p>ISO/SAE 21434, UNECE R155/R156, TARA, STRIDE threat modelling and attack trees</p>
     </div>
     <div class="about-card">
       <div class="about-card-icon">🔐</div>
-      <h3>ECU Security</h3>
-      <p>AUTOSAR SecOC, message authentication, cryptography fundamentals</p>
+      <h3>Product &amp; Embedded Security</h3>
+      <p>AUTOSAR SecOC, intrusion detection, penetration testing, cryptography and PKI</p>
     </div>
     <div class="about-card">
       <div class="about-card-icon">🔬</div>
-      <h3>Validation &amp; RCA</h3>
-      <p>Fault injection testing, structured root-cause analysis, HIL environments</p>
+      <h3>ECU, ADAS &amp; RCA</h3>
+      <p>ECU validation, ADAS and RVC feature testing, structured root-cause analysis</p>
     </div>
   </div>
 </section>
@@ -1099,6 +1221,49 @@
           </div>
         </div>
         <a href="https://github.com/Dinesh0013" target="_blank" class="btn-primary" style="display:inline-flex;margin-top:1rem;font-size:0.8rem;padding:0.6rem 1.4rem;background:var(--accent);color:#fff;">View on GitHub →</a>
+      </div>
+    </div>
+
+    <!-- MSC DISSERTATION -->
+    <div class="project-card featured">
+      <div class="project-body">
+        <div class="project-meta">
+          <span class="project-type">MSc Dissertation · Cryptanalysis &amp; Machine Learning</span>
+          <span class="project-dot"></span>
+          <span class="project-status">Distinction</span>
+        </div>
+        <h3>Machine Learning Attacks on Chaos-Based Image Encryption</h3>
+        <p>
+          MSc Applied Cybersecurity dissertation at Queen's University Belfast, awarded Distinction: a deep-learning known-plaintext attack against a chaos-based image cipher, replicated and corrected in PyTorch.
+        </p>
+        <ul style="list-style:none;margin:0 0 1rem 0;padding:0;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Replicated and corrected a published deep-learning attack on a chaos-based image cipher</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Trained 22.35M-parameter convolutional encoder–decoders across a seven-run ablation under a leakage-free protocol</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Raised attack accuracy from 9.74% to 97.27%</li>
+          <li style="font-size:0.85rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Introduced the adversary data budget as a security metric</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">NumPy</span>
+          <span class="tech-pill">SciPy</span>
+          <span class="tech-pill">Cryptanalysis</span>
+        </div>
+        <div class="project-stat-row">
+          <div class="project-stat">
+            <div class="val">97.27%</div>
+            <div class="lbl">Attack Accuracy (from 9.74%)</div>
+          </div>
+          <div class="project-stat">
+            <div class="val">22.35M</div>
+            <div class="lbl">Model Parameters</div>
+          </div>
+          <div class="project-stat">
+            <div class="val">7</div>
+            <div class="lbl">Ablation Runs</div>
+          </div>
+        </div>
+        <a href="blog.html?post=ml-attacks-chaos-image-encryption" class="btn-primary" style="display:inline-flex;margin-top:1rem;font-size:0.8rem;padding:0.6rem 1.4rem;background:var(--accent);color:#fff;">Read the Write-up →</a>
       </div>
     </div>
 
@@ -1177,68 +1342,131 @@
   <div class="skills-grid">
 
     <div class="skill-group">
-      <div class="skill-group-label">Industrial Protocols</div>
+      <div class="skill-group-label">Automotive Cybersecurity</div>
       <ul class="skill-list">
-        <li>CAN Bus</li>
+        <li>ISO/SAE 21434</li>
+        <li>UNECE R155 / R156</li>
+        <li>Threat Analysis &amp; Risk Assessment (TARA)</li>
+        <li>STRIDE &amp; Attack Trees</li>
+        <li>AUTOSAR SecOC</li>
+        <li>Intrusion Detection Systems</li>
+        <li>EU Cyber Resilience Act · RED (EN 18031) · IEC 62443</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Product &amp; Embedded Security</div>
+      <ul class="skill-list">
+        <li>Penetration Testing &amp; Ethical Hacking</li>
+        <li>Side-Channel Attacks &amp; Fault Injection</li>
+        <li>Cryptography &amp; PKI (AES, RSA, ECC, TLS)</li>
+        <li>Network Security</li>
+        <li>Machine Learning Cryptanalysis</li>
+        <li>Kali Linux · Wireshark</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-label">Vehicle Networks &amp; Protocols</div>
+      <ul class="skill-list">
+        <li>CAN Bus (ISO 11898) &amp; CAN FD</li>
         <li>LIN</li>
-        <li>UDS (Unified Diagnostic Services)</li>
+        <li>UDS Diagnostics (ISO 14229)</li>
+        <li>ISO-TP (ISO 15765)</li>
         <li>OBD-II</li>
         <li>Automotive Ethernet</li>
       </ul>
     </div>
 
     <div class="skill-group">
-      <div class="skill-group-label">Hardware &amp; Systems Testing</div>
+      <div class="skill-group-label">ECU, ADAS &amp; Validation</div>
       <ul class="skill-list">
-        <li>CANoe / CANalyzer</li>
-        <li>CAPL Scripting</li>
-        <li>Hardware-in-the-Loop (HIL) Testing</li>
-        <li>Embedded C / C++</li>
-        <li>Sensor Data Acquisition</li>
+        <li>ECU Validation &amp; Feature Software</li>
+        <li>ADAS &amp; Rear View Camera Testing</li>
+        <li>Requirement-Based Testing &amp; Regression</li>
+        <li>HIL, Bench &amp; Vehicle Testing</li>
+        <li>Wiring Harness Validation</li>
+        <li>Root Cause Analysis</li>
+        <li>ISO 26262 · ASPICE · V-Model</li>
       </ul>
     </div>
 
     <div class="skill-group">
-      <div class="skill-group-label">Automotive Cybersecurity</div>
-      <ul class="skill-list">
-        <li>ISO/SAE 21434</li>
-        <li>UNECE WP.29 R155/R156</li>
-        <li>Threat Analysis &amp; Risk Assessment (TARA)</li>
-        <li>STRIDE Threat Modelling</li>
-        <li>AUTOSAR SecOC</li>
-        <li>Fault / Malformed Frame Injection</li>
-        <li>Cryptography Fundamentals</li>
-        <li>PKI, TLS, OAuth2/OIDC</li>
-      </ul>
-    </div>
-
-    <div class="skill-group">
-      <div class="skill-group-label">Data &amp; Automation</div>
+      <div class="skill-group-label">Programming &amp; Automation</div>
       <ul class="skill-list">
         <li>Python</li>
-        <li>pandas &amp; Data Pipelines</li>
-        <li>Automated Test Frameworks</li>
-        <li>Google Colab</li>
+        <li>C / C++</li>
+        <li>CAPL</li>
+        <li>Shell Scripting</li>
+        <li>PyTorch · NumPy · SciPy</li>
+        <li>Git · Linux</li>
+        <li>TypeScript · Next.js · Supabase</li>
       </ul>
     </div>
 
     <div class="skill-group">
-      <div class="skill-group-label">DevOps &amp; Databases</div>
+      <div class="skill-group-label">Tools &amp; Delivery</div>
       <ul class="skill-list">
-        <li>Git / GitHub / GitHub Actions</li>
-        <li>Jenkins, Bitbucket, Docker</li>
-        <li>PostgreSQL &amp; Schema Design</li>
+        <li>CANoe / CANalyzer</li>
+        <li>Programmable Power Supply Control</li>
+        <li>Automated Log Parsing &amp; Fault Evidence Extraction</li>
+        <li>JIRA · DOORS · Confluence</li>
+        <li>Jenkins CI · JFrog</li>
       </ul>
     </div>
 
-    <div class="skill-group">
-      <div class="skill-group-label">Documentation &amp; Tools</div>
-      <ul class="skill-list">
-        <li>JIRA, Confluence, DOORS</li>
-        <li>Test Plans &amp; Validation Reports</li>
-        <li>Requirement Gap Analysis</li>
-        <li>Wireshark</li>
-      </ul>
+  </div>
+</section>
+
+<!-- ACADEMIC RESULTS -->
+<section class="results" id="results">
+  <div class="section-label">Academic Results</div>
+  <h2>Graduated with<br><em>Distinction.</em></h2>
+  <div class="results-grid">
+
+    <div class="result-card highlight">
+      <span class="result-badge">🎓 Distinction</span>
+      <h3>MSc Applied Cybersecurity</h3>
+      <div class="org">Queen's University Belfast · Belfast, UK · Sep 2025 – Oct 2026</div>
+      <div class="result-stats">
+        <div class="result-stat">
+          <div class="val">Distinction</div>
+          <div class="lbl">Overall Award</div>
+        </div>
+        <div class="result-stat">
+          <div class="val">73%</div>
+          <div class="lbl">Taught Modules Average</div>
+        </div>
+        <div class="result-stat">
+          <div class="val">86%</div>
+          <div class="lbl">Top Mark · Cyber AI</div>
+        </div>
+        <div class="result-stat">
+          <div class="val">Distinction</div>
+          <div class="lbl">Dissertation</div>
+        </div>
+      </div>
+      <div class="result-modules-label">Modules</div>
+      <div class="project-tech" style="margin-bottom:0;">
+        <span class="tech-pill">Cryptography</span>
+        <span class="tech-pill">Penetration Testing &amp; Ethical Hacking</span>
+        <span class="tech-pill">Network Security</span>
+        <span class="tech-pill">Software Assurance</span>
+        <span class="tech-pill">Foundations of Cyber Security</span>
+        <span class="tech-pill">Cyber AI</span>
+        <span class="tech-pill">Data, Privacy and the Law</span>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <h3>B.E. Electronics and Communication Engineering</h3>
+      <div class="org">Netaji Subhas Institute of Technology (NSIT), University of Delhi · India · Aug 2018 – Jun 2022</div>
+      <div class="result-stats" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">
+        <div class="result-stat">
+          <div class="val">First Class</div>
+          <div class="lbl">Equivalent to UK 2:1 Honours</div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1251,29 +1479,44 @@
   <div class="timeline">
 
     <div class="timeline-item">
-      <div class="timeline-date">March 2026 – April 2026</div>
-      <h3>Research Assistant</h3>
+      <div class="timeline-date">Sep 2025 – Oct 2026</div>
+      <h3>MSc Applied Cybersecurity — Distinction</h3>
       <div class="org">Queen's University Belfast · Belfast, UK</div>
-      <p>Designed a full data pipeline and measurement analytics platform to quantify the behavioural impact of environmental education videos, with real-time dashboards for participant impact metrics.</p>
+      <p>Graduated with Distinction, including a Distinction-awarded dissertation on machine learning attacks against chaos-based image encryption. See <a href="#results" style="color:var(--accent);">Academic Results</a> for modules and marks.</p>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-date">2025 – Present (expected 2026)</div>
-      <h3>MSc Applied Cybersecurity</h3>
-      <div class="org">Queen's University Belfast · Belfast, UK · On track for Distinction</div>
-      <p>Modules: <em>Cryptography &amp; PKI &nbsp;·&nbsp; Network Security &nbsp;·&nbsp; Risk &amp; Compliance &nbsp;·&nbsp; Cyber in AI &nbsp;·&nbsp; Software Assurance &nbsp;·&nbsp; Cyber Law</em></p>
+      <div class="timeline-date">Jan 2026 – Apr 2026</div>
+      <h3>Research Assistant</h3>
+      <div class="org">Queen's University Belfast · Belfast, UK</div>
+      <p>Built an automated data framework for a QUB research team, processing and analysing Google Forms data from hundreds of schools into real-time impact dashboards, with secure and safe handling of school data.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2025 – Present</div>
+      <h3>President, QUB Cricket Club</h3>
+      <div class="org">Queen's University Belfast · Belfast, UK</div>
+      <p>Lead a 50+ member club: scheduling, event delivery, stakeholder communication and budget oversight. Founded the club constitution and delivered the Active Campus Cricket programme for 100 to 200 participants, the highest footfall event across all QUB sports clubs.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2025 – Present</div>
+      <h3>Volunteering</h3>
+      <div class="org">Queen's University Belfast · Belfast, UK</div>
+      <p>Operations Assistant at the Student Union (50+ volunteer hours), supporting clubs, societies and event bookings; volunteer tour guide welcoming new joiners on campus tours since August 2026.</p>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-date">May 2022 – Sept 2025</div>
-      <h3>Project Engineer</h3>
+      <h3>Project Engineer · ECU Validation and Feature Software</h3>
       <div class="org">DTICI — Daimler Trucks Innovation Centre India (via Wipro Technologies) · Bengaluru, India</div>
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;">
-        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Designed and validated full-scope vehicle network simulations in CANoe spanning ECU-to-ECU topology and protocol-level behaviour, across CAN bus, LIN, and UDS.</li>
-        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Built an integrated GUI automation tool combining power supply control, UDS-over-CAN firmware flashing, and automated CAPL regression testing — including malformed frame injection — cutting pre-release validation effort by 90%.</li>
-        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Captured and analysed real-time sensor and telemetry data from embedded controllers using OBD-II and UDS diagnostic protocols.</li>
-        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Performed structured root-cause failure analysis on a production ECU, isolating a hardware-level defect and averting a safety-critical manufacturing incident.</li>
-        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Produced test plans, validation reports, and requirement gap analyses; liaised across 25+ engineers spanning Tier-1 supplier and OEM teams via JIRA, DOORS, and Confluence.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Root-caused 500+ vehicle-level defects: reproduced faults on the bench and in vehicles, analysed CAN, CAN FD and LIN traces, UDS diagnostic sessions, DTC behaviour and ECU logs, and drove triage sessions routing defects to the owning teams with evidence documented in DOORS and Confluence.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Built an integrated Python test framework combining programmable power supply control, firmware retrieval, UDS-over-CAN flashing and automated CAPL regression in CANoe, with scripted log collection and trace parsing — cutting pre-release validation effort by 90%.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Owned requirement-based bench testing and feature requirement documentation for 7 IC features across the ADAS portfolio and Rear View Camera (RVC), as the OEM-facing point of contact from requirement definition to stakeholder sign-off.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Performed harness-level validation on vehicle wiring harnesses feeding ECU inputs: continuity, connector pinout, and signal and voltage integrity.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Verified supplier and internal software fixes through regression testing, confirming defect closure across affected ECUs.</li>
+        <li style="font-size:0.87rem;color:#c9c2b4;display:flex;gap:0.6rem;"><span style="color:var(--accent);flex-shrink:0;">•</span> Coordinated validation across 25+ engineers in Tier-1 supplier and OEM teams via JIRA, DOORS and Confluence; presented findings in cross-functional reviews and mentored 3 junior engineers.</li>
       </ul>
     </div>
 
@@ -1281,7 +1524,7 @@
       <div class="timeline-date">2018 – 2022</div>
       <h3>B.E. Electronics and Communication Engineering</h3>
       <div class="org">Netaji Subhas Institute of Technology (NSIT), University of Delhi · New Delhi, India</div>
-      <p>Equivalent to UK 2.1 Honours — First Class graduate of a Tier-1 national engineering institution.</p>
+      <p>First Class, equivalent to UK 2:1 Honours.</p>
     </div>
 
   </div>
@@ -1293,19 +1536,19 @@
     <div class="section-label">Contact</div>
     <h2>Let's connect.</h2>
     <p>
-      Open to Security Engineer and Security Validation Engineer roles in UK automotive. Always happy to talk CAN bus security, ISO/SAE 21434, or vehicle network validation. Reach out through any of the links below.
+      Open to Automotive Cybersecurity, Product Security and Security Validation Engineer roles in the UK. Always happy to talk CAN bus security, ISO/SAE 21434, penetration testing, or vehicle network validation. Reach out through any of the links below.
     </p>
     <p style="margin-bottom:1.5rem;">
       If you're hiring for automotive cybersecurity or want to talk shop, just ping and let's get started.
     </p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#4125282f24322970727179707201262c20282d6f222e2c" class="contact-link">
+      <a href="mailto:dinesh130813@gmail.com" class="contact-link">
         <div class="contact-link-icon" style="background:#fce8e6;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="20" height="14" x="2" y="5" rx="2" stroke="#EA4335" stroke-width="1.8"/><path d="M2 7l10 7 10-7" stroke="#EA4335" stroke-width="1.8"/></svg>
         </div>
         <div class="contact-link-text">
           <div class="label">Gmail</div>
-          <div class="value"><span class="__cf_email__" data-cfemail="24404d4a41574c1517141c1517644349454d480a474b49">[email&#160;protected]</span></div>
+          <div class="value">dinesh130813@gmail.com</div>
         </div>
       </a>
       <a href="https://github.com/Dinesh0013" class="contact-link" target="_blank">
@@ -1346,7 +1589,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div>© 2025 <span>Dinesh Sangwan</span></div>
+  <div>© 2026 <span>Dinesh Sangwan</span></div>
   <div>Built with precision · Secured by design</div>
 </footer>
 
