@@ -5,18 +5,23 @@
  *   slug     unique, lowercase-with-dashes; the post URL is blog.html?post=<slug>
  *   title    post title
  *   date     publication date, YYYY-MM-DD (posts are listed newest first)
- *   tags     short labels shown on the card and the post
- *   summary  one or two sentences shown on the blog list
- *   content  the post body as HTML (<h2>, <p>, <ul>, <a>, <code>, <blockquote> are styled)
+ *   tags     short labels shown under the title
+ *   summary  one or two sentences, shown on the blog list and under the article title
+ *   content  the post body as HTML. Styled elements:
+ *              <h2> (each one appears in the "On this page" list), <h3>, <p>, <ul>, <ol>,
+ *              <a>, <strong>, <code>, <pre><code>, <blockquote>, <figure> with <figcaption>,
+ *              <table>, <hr>, and <dl class="facts"> for a key-figures table.
+ *            Reading time is calculated automatically.
  *
  * Inside `content` (a template literal) avoid backticks and the sequence ${ .
+ * For a code block use: <pre><code>...</code></pre> and escape < as &lt; and & as &amp;.
  */
 window.BLOG_POSTS = [
   {
     slug: 'ml-attacks-chaos-image-encryption',
     title: 'Machine Learning Attacks on Chaos-Based Image Encryption',
     date: '2026-11-02',
-    tags: ['MSc Dissertation', 'Cryptanalysis', 'Machine Learning', 'PyTorch'],
+    tags: ['MSc dissertation', 'Cryptanalysis', 'Machine learning', 'PyTorch'],
     summary:
       'A short overview of my MSc dissertation at Queen’s University Belfast, awarded Distinction: replicating and correcting a published deep-learning known-plaintext attack on a chaos-based image cipher, and raising attack accuracy from 9.74% to 97.27%.',
     content: `
@@ -27,11 +32,12 @@ window.BLOG_POSTS = [
         such cipher, corrected it, and measured how well the attack performs.
       </p>
 
-      <div class="post-stats">
-        <div class="post-stat"><div class="val">97.27%</div><div class="lbl">Attack accuracy (from 9.74%)</div></div>
-        <div class="post-stat"><div class="val">22.35M</div><div class="lbl">Model parameters</div></div>
-        <div class="post-stat"><div class="val">7</div><div class="lbl">Ablation runs</div></div>
-      </div>
+      <dl class="facts">
+        <div><dt>Attack accuracy</dt><dd>97.27%<small>up from 9.74%</small></dd></div>
+        <div><dt>Model size</dt><dd>22.35M<small>parameters</small></dd></div>
+        <div><dt>Ablation</dt><dd>7 runs</dd></div>
+        <div><dt>Dissertation</dt><dd>Distinction</dd></div>
+      </dl>
 
       <h2>The attack setting</h2>
       <p>
@@ -70,7 +76,7 @@ window.BLOG_POSTS = [
 
       <blockquote>
         This post is a short overview of the project and its headline results.
-        More on my coursework and marks is in <a href="index.html#results">Academic Results</a>.
+        My coursework and marks are on the <a href="index.html#education">education section</a> of the home page.
       </blockquote>
     `
   }
